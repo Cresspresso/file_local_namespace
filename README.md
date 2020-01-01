@@ -45,7 +45,7 @@ This is provided by MSVC.
 
 #include <chrono>
 
-#include "FILE_LOCAL_NAMESPACE.HPP"
+#include <FILE_LOCAL_NAMESPACE.HPP>
 namespace FLN
 {
 	using namespace std::chrono;
@@ -62,7 +62,7 @@ namespace example
 
 #include "example.h"
 
-#include "FILE_LOCAL_NAMESPACE.HPP"
+#include <FILE_LOCAL_NAMESPACE.HPP>
 namespace FLN
 {
 	using namespace std::chrono;
@@ -100,7 +100,7 @@ The MSVC provides `push_macro` and `pop_macro` which can be used to create scope
 
 constexpr int fln = 5; // something with same identifier that was imported unknowingly
 
-#include "FILE_LOCAL_NAMESPACE.HPP"
+#include <FILE_LOCAL_NAMESPACE.HPP>
 namespace FILE_LOCAL_NAMESPACE
 {
 	using namespace std::chrono;

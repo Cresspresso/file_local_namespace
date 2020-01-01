@@ -34,7 +34,7 @@
 
 	#include <chrono>
 
-	#include "FILE_LOCAL_NAMESPACE.HPP"
+	#include <FILE_LOCAL_NAMESPACE.HPP>
 	namespace FLN
 	{
 		using namespace std::chrono;
@@ -51,7 +51,7 @@
 
 	#include "example.h"
 
-	#include "FILE_LOCAL_NAMESPACE.HPP"
+	#include <FILE_LOCAL_NAMESPACE.HPP>
 	namespace FLN
 	{
 		using namespace std::chrono;
@@ -83,7 +83,7 @@
 
 	constexpr int fln = 5; // something with same identifier that was imported unknowingly
 
-	#include "FILE_LOCAL_NAMESPACE.HPP"
+	#include <FILE_LOCAL_NAMESPACE.HPP>
 	namespace FILE_LOCAL_NAMESPACE
 	{
 		using namespace std::chrono;
