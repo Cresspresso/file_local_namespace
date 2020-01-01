@@ -39,42 +39,42 @@ This is provided by MSVC.
 ### Example
 
 ```cpp
-	// example.h
+// example.h
 
-	#pragma once
+#pragma once
 
-	#include <chrono>
+#include <chrono>
 
-	#include "FILE_LOCAL_NAMESPACE.HPP"
-	namespace FLN
-	{
-		using namespace std::chrono;
-	}
+#include "FILE_LOCAL_NAMESPACE.HPP"
+namespace FLN
+{
+	using namespace std::chrono;
+}
 
-	namespace example
-	{
-		FLN::seconds get_seconds();
-	}
+namespace example
+{
+	FLN::seconds get_seconds();
+}
 ```
 
 ```cpp
-	// example.cpp
+// example.cpp
 
-	#include "example.h"
+#include "example.h"
 
-	#include "FILE_LOCAL_NAMESPACE.HPP"
-	namespace FLN
+#include "FILE_LOCAL_NAMESPACE.HPP"
+namespace FLN
+{
+	using namespace std::chrono;
+}
+
+namespace example
+{
+	FLN::seconds get_seconds()
 	{
-		using namespace std::chrono;
+		return FLN::duration_cast<FLN::seconds>(FLN::milliseconds(3000));
 	}
-
-	namespace example
-	{
-		FLN::seconds get_seconds()
-		{
-			return FLN::duration_cast<FLN::seconds>(FLN::milliseconds(3000));
-		}
-	}
+}
 ```
 
 ## FLN
@@ -92,44 +92,44 @@ The MSVC provides `push_macro` and `pop_macro` which can be used to create scope
 ### Example 2
 
 ```cpp
-	// example2.h
+// example2.h
 
-	#pragma once
+#pragma once
 
-	#include <chrono>
+#include <chrono>
 
-	constexpr int fln = 5; // something with same identifier that was imported unknowingly
+constexpr int fln = 5; // something with same identifier that was imported unknowingly
 
-	#include "FILE_LOCAL_NAMESPACE.HPP"
-	namespace FILE_LOCAL_NAMESPACE
-	{
-		using namespace std::chrono;
-	}
+#include "FILE_LOCAL_NAMESPACE.HPP"
+namespace FILE_LOCAL_NAMESPACE
+{
+	using namespace std::chrono;
+}
 
-	#pragma push_macro("fln")
-	#define fln FILE_LOCAL_NAMESPACE
+#pragma push_macro("fln")
+#define fln FILE_LOCAL_NAMESPACE
 
-	namespace example2
-	{
-		fln::seconds get_seconds();
-	}
+namespace example2
+{
+	fln::seconds get_seconds();
+}
 
-	#pragma pop_macro("fln") // fln macro removed, now back to constexpr int fln
+#pragma pop_macro("fln") // fln macro removed, now back to constexpr int fln
 ```
 
 ```cpp
-	// example2.cpp
+// example2.cpp
 
-	#include "example2.h"
+#include "example2.h"
 
-	using namespace std::chrono;
+using namespace std::chrono;
 
-	namespace example2
+namespace example2
+{
+	seconds get_seconds()
 	{
-		seconds get_seconds()
-		{
-			constexpr int x = fln;
-			return seconds(x);
-		}
+		constexpr int x = fln;
+		return seconds(x);
 	}
+}
 ```
