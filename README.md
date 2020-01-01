@@ -2,8 +2,12 @@
 # File Local Namespace
 
 Author: Elijah Shadbolt
+
 Date Edited: 01/01/2020
+
 License: MIT
+
+## Description
 
 Allows you to declare anonymous namespaces in separate header files, avoiding name pollution.
 
