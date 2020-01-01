@@ -9,6 +9,15 @@ Allows you to declare anonymous namespaces in separate header files, avoiding na
 
 The file local namespace should contain aliases (using statements) because other members are not reliably accessable from your headers' accompanying cpp files.
 
+## Installation
+
+This is a single-file header-only library.
+
+1. Copy `FILE_LOCAL_NAMESPACE.HPP` from the `include` folder into your project.
+2. Add the directory of the copied file to your project dependencies (`additional include directories` for Visual Studio).
+3. Include the header file. `#include <FILE_LOCAL_NAMESPACE.HPP>`
+4. Declare the namespace. `namespace FILE_LOCAL_NAMESPACE { /* your aliases here */ }`
+
 ## How it Works
 
 The FILE_LOCAL_NAMESPACE macro expands to an identifier.
@@ -16,6 +25,12 @@ The FILE_LOCAL_NAMESPACE macro expands to an identifier.
 Every time this header is included, the FILE_LOCAL_NAMESPACE identifier is changed.
 
 You can then declare a new namespace with the name FILE_LOCAL_NAMESPACE.
+
+## Non-Standard Macro __COUNTER__
+
+The macro `__COUNTER__` must increment every time it is expanded.
+
+This is provided by MSVC.
 
 ### Example
 

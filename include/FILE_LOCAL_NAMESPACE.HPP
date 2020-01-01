@@ -13,6 +13,10 @@
 //		Every time this header is included, the FILE_LOCAL_NAMESPACE identifier is changed.
 //		You can then declare a new namespace with the name FILE_LOCAL_NAMESPACE.
 //
+//	Non-Standard Macro __COUNTER__
+//		The macro `__COUNTER__` must increment every time it is expanded.
+//		This is provided by MSVC.
+//
 //	Example:
 
 	// example.h
