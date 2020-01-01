@@ -80,7 +80,9 @@ This is provided by MSVC.
 ## FLN
 
 This header file also defines `FLN` as an alias for `FILE_LOCAL_NAMESPACE`.
+
 `FLN` may cause name conflicts because it is a very short identifier, so it is optional, but defined by default.
+
 `FLN` is not defined if `FLN_PP_NO_SHORTHAND` is defined before the first time this header is included.
 
 ### Don't forget `push_macro`!
