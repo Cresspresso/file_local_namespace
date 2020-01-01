@@ -1,0 +1,9 @@
+example/.vs
+example/Debug
+example/Release
+example/x64/Debug
+example/x64/Release
+example/example/Debug
+example/example/Release
+example/example/x64/Debug
+example/example/x64/Release
