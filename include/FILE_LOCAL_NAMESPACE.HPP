@@ -4,7 +4,7 @@
 //	Date Edited: 01/01/2020
 //	License: MIT
 //	
-//	Allows you to declare anonymous namespaces in separate header files.
+//	Allows you to declare anonymous namespaces in separate header files, avoiding name pollution.
 //	The file local namespace should contain aliases (using statements) because other members are
 //	not reliably accessable from your headers' accompanying cpp files.
 //
