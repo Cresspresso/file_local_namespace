@@ -133,3 +133,11 @@ namespace example2
 	}
 }
 ```
+
+## Limitations
+
+- There can only be so many FLN namespaces ((2 to the power of FLN_NUM_COUNTER_BITS) / FLN_NUM_COUNTER_BITS).
+	Exceeding this limit may risk doubling up and adding aliases to the other previous namespaces.
+	Currently this limit is 102, because FLN_NUM_COUNTER_BITS == 10.
+- It may slow down compilation time because of the indeterminate `__COUNTER__` macro being used for identifiers.
+	Compilation time has not been tested.

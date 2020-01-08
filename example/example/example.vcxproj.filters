@@ -24,6 +24,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="recursion_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="example.h">
@@ -36,6 +39,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="example3_utils.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="recursion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="recursion_test.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

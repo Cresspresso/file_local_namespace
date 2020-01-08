@@ -117,6 +117,13 @@
 	}
 
 //
+//	Limitations
+//
+//		- There can only be so many FLN namespaces ((2 to the power of FLN_NUM_COUNTER_BITS) / FLN_NUM_COUNTER_BITS).
+//			Exceeding this limit may risk doubling up and adding aliases to the other previous namespaces.
+//			Currently this limit is 102, because FLN_NUM_COUNTER_BITS == 10.
+//		- It may slow down compilation time because of the indeterminate `__COUNTER__` macro being used for identifiers.
+//			Compilation time has not been tested.
 */
 
 #ifndef FILE_LOCAL_NAMESPACE_HPP
@@ -126,20 +133,22 @@
 #define FLN_CONCAT_TOKEN(a, b) a ## b
 #define FLN_CONCAT(a, b) FLN_CONCAT_TOKEN(a, b)
 
+#define FLN_NUM_COUNTER_BITS 10
+
 #define FLN_CONCAT_TOKEN_MANY(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) a0 ## a1 ## a2 ## a3 ## a4 ## a5 ## a6 ## a7 ## a8 ## a9
 #define FLN_CONCAT_MANY(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9) FLN_CONCAT_TOKEN_MANY(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 
 #define FLN_COUNTER FLN_CONCAT_MANY(\
-FLN_COUNTER_BIT_0,\
-FLN_COUNTER_BIT_1,\
-FLN_COUNTER_BIT_2,\
-FLN_COUNTER_BIT_3,\
-FLN_COUNTER_BIT_4,\
-FLN_COUNTER_BIT_5,\
-FLN_COUNTER_BIT_6,\
-FLN_COUNTER_BIT_7,\
-FLN_COUNTER_BIT_8,\
-FLN_COUNTER_BIT_9)
+FLN_COUNTER_BIT_09,\
+FLN_COUNTER_BIT_08,\
+FLN_COUNTER_BIT_07,\
+FLN_COUNTER_BIT_06,\
+FLN_COUNTER_BIT_05,\
+FLN_COUNTER_BIT_04,\
+FLN_COUNTER_BIT_03,\
+FLN_COUNTER_BIT_02,\
+FLN_COUNTER_BIT_01,\
+FLN_COUNTER_BIT_00)
 
 #define FILE_LOCAL_NAMESPACE FLN_CONCAT(File_Local_Namespace_, FLN_COUNTER)
 
@@ -151,92 +160,92 @@ FLN_COUNTER_BIT_9)
 
 
 
-#ifdef FLN_COUNTER_BIT_0
-#  undef FLN_COUNTER_BIT_0
+#ifdef FLN_COUNTER_BIT_00
+#  undef FLN_COUNTER_BIT_00
 #endif
 #if (__COUNTER__) & 1
-#  define FLN_COUNTER_BIT_0 1
+#  define FLN_COUNTER_BIT_00 1
 #else
-#  define FLN_COUNTER_BIT_0 0
+#  define FLN_COUNTER_BIT_00 0
 #endif
 
-#ifdef FLN_COUNTER_BIT_1
-#  undef FLN_COUNTER_BIT_1
+#ifdef FLN_COUNTER_BIT_01
+#  undef FLN_COUNTER_BIT_01
 #endif
 #if (__COUNTER__ - 1) >> 1 & 1
-#  define FLN_COUNTER_BIT_1 1
+#  define FLN_COUNTER_BIT_01 1
 #else
-#  define FLN_COUNTER_BIT_1 0
+#  define FLN_COUNTER_BIT_01 0
 #endif
 
-#ifdef FLN_COUNTER_BIT_2
-#  undef FLN_COUNTER_BIT_2
+#ifdef FLN_COUNTER_BIT_02
+#  undef FLN_COUNTER_BIT_02
 #endif
 #if (__COUNTER__ - 2) >> 2 & 1
-#  define FLN_COUNTER_BIT_2 1
+#  define FLN_COUNTER_BIT_02 1
 #else
-#  define FLN_COUNTER_BIT_2 0
+#  define FLN_COUNTER_BIT_02 0
 #endif
 
-#ifdef FLN_COUNTER_BIT_3
-#  undef FLN_COUNTER_BIT_3
+#ifdef FLN_COUNTER_BIT_03
+#  undef FLN_COUNTER_BIT_03
 #endif
 #if (__COUNTER__ - 3) >> 3 & 1
-#  define FLN_COUNTER_BIT_3 1
+#  define FLN_COUNTER_BIT_03 1
 #else
-#  define FLN_COUNTER_BIT_3 0
+#  define FLN_COUNTER_BIT_03 0
 #endif
 
-#ifdef FLN_COUNTER_BIT_4
-#  undef FLN_COUNTER_BIT_4
+#ifdef FLN_COUNTER_BIT_04
+#  undef FLN_COUNTER_BIT_04
 #endif
 #if (__COUNTER__ - 4) >> 4 & 1
-#  define FLN_COUNTER_BIT_4 1
+#  define FLN_COUNTER_BIT_04 1
 #else
-#  define FLN_COUNTER_BIT_4 0
+#  define FLN_COUNTER_BIT_04 0
 #endif
 
-#ifdef FLN_COUNTER_BIT_5
-#  undef FLN_COUNTER_BIT_5
+#ifdef FLN_COUNTER_BIT_05
+#  undef FLN_COUNTER_BIT_05
 #endif
 #if (__COUNTER__ - 5) >> 5 & 1
-#  define FLN_COUNTER_BIT_5 1
+#  define FLN_COUNTER_BIT_05 1
 #else
-#  define FLN_COUNTER_BIT_5 0
+#  define FLN_COUNTER_BIT_05 0
 #endif
 
-#ifdef FLN_COUNTER_BIT_6
-#  undef FLN_COUNTER_BIT_6
+#ifdef FLN_COUNTER_BIT_06
+#  undef FLN_COUNTER_BIT_06
 #endif
 #if (__COUNTER__ - 6) >> 6 & 1
-#  define FLN_COUNTER_BIT_6 1
+#  define FLN_COUNTER_BIT_06 1
 #else
-#  define FLN_COUNTER_BIT_6 0
+#  define FLN_COUNTER_BIT_06 0
 #endif
 
-#ifdef FLN_COUNTER_BIT_7
-#  undef FLN_COUNTER_BIT_7
+#ifdef FLN_COUNTER_BIT_07
+#  undef FLN_COUNTER_BIT_07
 #endif
 #if (__COUNTER__ - 7) >> 7 & 1
-#  define FLN_COUNTER_BIT_7 1
+#  define FLN_COUNTER_BIT_07 1
 #else
-#  define FLN_COUNTER_BIT_7 0
+#  define FLN_COUNTER_BIT_07 0
 #endif
 
-#ifdef FLN_COUNTER_BIT_8
-#  undef FLN_COUNTER_BIT_8
+#ifdef FLN_COUNTER_BIT_08
+#  undef FLN_COUNTER_BIT_08
 #endif
 #if (__COUNTER__ - 8) >> 8 & 1
-#  define FLN_COUNTER_BIT_8 1
+#  define FLN_COUNTER_BIT_08 1
 #else
-#  define FLN_COUNTER_BIT_8 0
+#  define FLN_COUNTER_BIT_08 0
 #endif
 
-#ifdef FLN_COUNTER_BIT_9
-#  undef FLN_COUNTER_BIT_9
+#ifdef FLN_COUNTER_BIT_09
+#  undef FLN_COUNTER_BIT_09
 #endif
 #if (__COUNTER__ - 9) >> 9 & 1
-#  define FLN_COUNTER_BIT_9 1
+#  define FLN_COUNTER_BIT_09 1
 #else
-#  define FLN_COUNTER_BIT_9 0
+#  define FLN_COUNTER_BIT_09 0
 #endif
